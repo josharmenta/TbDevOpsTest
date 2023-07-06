@@ -33,7 +33,8 @@ jobs:
         run: |
           sudo apt update &&
           sudo apt install -y libc6-armhf-cross &&
-          sudo apt install -y qemu-user
+          sudo apt install -y qemu-user &&
+          export QEMU_LD_PREFIX=/usr/arm-linux-gnueabi
 
       - name: Install ARM GCC cross-compiler
         run: sudo apt install -y gcc-arm-linux-gnueabihf 
