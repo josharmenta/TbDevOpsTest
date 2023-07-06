@@ -30,7 +30,9 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Install QEMU
-        run: sudo apt install -y qemu-user libc6-armhf-cross libc6:armhf
+        run: | 
+          sudo apt install -y qemu-user libc6-armhf-cross &&
+          sudo ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /lib/ld-linux-armhf.so.3
 
       - name: Install ARM GCC cross-compiler
         run: sudo apt install -y gcc-arm-linux-gnueabihf 
