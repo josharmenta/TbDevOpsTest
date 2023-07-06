@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  build-x86:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        uses: actions/setup-cmake@v1
+
+      - name: Build
+        run: cmake . && make
+
+      - name: Print "Hello World"
+        run: ./HelloWorld
+
+  build-arm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        uses: actions/setup-cmake@v1
+
+      - name: Install ARM GCC cross-compiler
+        run: sudo apt-get install -y gcc-arm-linux-gnueabihf
+
+      - name: Build
+        run: cmake -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc . && make
+
+      - name: Print "Hello World"
+        run: qemu-arm ./HelloWorld
