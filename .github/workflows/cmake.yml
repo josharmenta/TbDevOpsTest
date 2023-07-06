@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up CMake
-        uses: actions/setup-cmake@v1
+      - name: Install CMake
+        run: sudo apt-get -y install cmake
 
       - name: Build
         run: cmake . && make
@@ -29,11 +29,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up CMake
-        uses: actions/setup-cmake@v1
-
       - name: Install ARM GCC cross-compiler
-        run: sudo apt-get install -y gcc-arm-linux-gnueabihf
+        run: sudo apt-get -y install gcc-arm-linux-gnueabihf
+
+      - name: Install CMake
+        run: sudo apt-get -y install cmake
 
       - name: Build
         run: cmake -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc . && make
