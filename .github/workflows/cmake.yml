@@ -31,9 +31,8 @@ jobs:
         
       - name: Install QEMU
         run: |
-          sudo dpkg --add-architecture armhf &&
           sudo apt update &&
-          sudo apt install libc6-armhf-cross &&
+          sudo apt install -y libc6-armhf-cross &&
           sudo apt install -y qemu-user
 
       - name: Install ARM GCC cross-compiler
