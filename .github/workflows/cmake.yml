@@ -31,6 +31,7 @@ jobs:
         
       - name: Install QEMU
         run: |
+          export QEMU_LD_PREFIX=/usr/arm-linux-gnueabi &&
           sudo dpkg --add-architecture armhf &&
           sudo apt update &&
           sudo apt-get install libc6:armhf &&
