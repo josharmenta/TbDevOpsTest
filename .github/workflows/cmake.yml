@@ -29,13 +29,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: Setup QEMU
+      - name: Install QEMU
         run: |
-         wget https://github.com/multiarch/qemu-user-static/releases/download/v6.0.0-2/qemu-arm-static &&
-         chmod +x qemu-arm-static &&
-         sudo mv qemu-arm-static /usr/local/bin &&
-         qemu-arm-static --version
-        
+          sudo dpkg --add-architecture armhf &&
+          sudo apt update &&
+          sudo apt install libc6-armhf-cross &&
+          sudo apt install -y qemu-user
+
       - name: Install ARM GCC cross-compiler
         run: sudo apt install -y gcc-arm-linux-gnueabihf 
 
