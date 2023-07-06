@@ -45,5 +45,3 @@ jobs:
       - name: Build
         run: cmake -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc . && make
 
-      - name: Print "Hello World"
-        run: sudo qemu-arm ./HelloWorld
