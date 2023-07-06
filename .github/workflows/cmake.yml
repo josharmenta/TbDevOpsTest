@@ -32,8 +32,8 @@ jobs:
       - name: Setup QEMU
         run: |
          wget https://github.com/multiarch/qemu-user-static/releases/download/v6.0.0-2/qemu-arm-static &&
-         chmod +x qemu-arm-static
-         sudo mv qemu-arm-static /usr/local/bin
+         chmod +x qemu-arm-static &&
+         sudo mv qemu-arm-static /usr/local/bin &&
          qemu-arm-static --version
         
       - name: Install ARM GCC cross-compiler
