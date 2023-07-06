@@ -31,8 +31,10 @@ jobs:
         
       - name: Install QEMU
         run: |
+          sudo dpkg --add-architecture armhf
           sudo apt update &&
-          sudo apt-get install libc6-armhf &&
+          sudo apt-get update &&
+          sudo apt-get install libc6:armhf &&
           sudo apt install -y libc6-armhf-cross &&
           sudo apt install -y qemu-user
 
